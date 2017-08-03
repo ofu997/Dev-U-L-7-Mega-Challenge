@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Casino.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -141,7 +142,24 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\initial.png" />
+    <Content Include="Images\loser.png" />
+    <Content Include="Images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\Bar.png" />
+    <Content Include="Images\Bell.png" />
+    <Content Include="Images\Cherry.png" />
+    <Content Include="Images\Clover.png" />
+    <Content Include="Images\Diamond.png" />
+    <Content Include="Images\HorseShoe.png" />
+    <Content Include="Images\Lemon.png" />
+    <Content Include="Images\Orange.png" />
+    <Content Include="Images\Plum.png" />
+    <Content Include="Images\Seven.png" />
+    <Content Include="Images\Strawberry.png" />
+    <Content Include="Images\Watermellon.png" />
+    <Content Include="Images\webform_layout.png" />
+    <Content Include="Images\winner.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -186,6 +204,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Casino.aspx.cs">
+      <DependentUpon>Casino.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Casino.aspx.designer.cs">
+      <DependentUpon>Casino.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
