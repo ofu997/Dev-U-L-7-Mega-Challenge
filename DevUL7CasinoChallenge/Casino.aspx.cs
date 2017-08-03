@@ -13,7 +13,16 @@ namespace DevUL7CasinoChallenge
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (!Page.IsPostBack)
+			{
+				string[] reels = new string[] { spinReel(), spinReel(), spinReel() };
+				displayImages(reels);
+				ViewState.Add("PlayersMoney", 100);
+				displayPlayersMoney();
+			}
 		}
+
+
 
 		protected void Button1_Click(object sender, EventArgs e)
 		{
@@ -23,7 +32,19 @@ namespace DevUL7CasinoChallenge
 			int bet = 0;
 			if (!int.TryParse(betTextBox.Text, out bet)) return; 
 			int winnings=pullLever(bet);
-			displayResult(bet, winnings); 
+			displayResult(bet, winnings);
+			adjust(bet, winnings);
+			displayPlayersMoney(); 
+		}
+
+		private void adjust(int bet, int winnings)
+		{
+			//throw new NotImplementedException();
+			int playersMoney = int.Parse(ViewState["PlayersMoney"].ToString());
+			playersMoney -= bet;
+			playersMoney += winnings;
+			ViewState["PlayersMoney"]= playersMoney; 
+
 		}
 
 		private void displayResult(int bet, int winnings)
@@ -39,12 +60,6 @@ namespace DevUL7CasinoChallenge
 			}
 		}
 
-		private void displayImages(string[] reels)
-		{
-			Image1.ImageUrl = "/Images/" + reels[0] + ".png";
-			Image2.ImageUrl = "/Images/" + reels[1] + ".png";
-			Image3.ImageUrl = "/Images/" + reels[2] + ".png";
-		}
 
 		private int pullLever(int bet)
 		{
@@ -118,5 +133,19 @@ namespace DevUL7CasinoChallenge
 			
 			return images[randomthing.Next(11)];
 		}
+
+		private void displayPlayersMoney()
+		{
+			//throw new NotImplementedException();
+			moneyLabel.Text = String.Format("Player's Money: {0:C}", ViewState["PlayersMoney"]);
+		}
+
+		private void displayImages(string[] reels)
+		{
+			Image1.ImageUrl = "/Images/" + reels[0] + ".png";
+			Image2.ImageUrl = "/Images/" + reels[1] + ".png";
+			Image3.ImageUrl = "/Images/" + reels[2] + ".png";
+		}
+
 	}
 }
